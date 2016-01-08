@@ -29,11 +29,10 @@ public class RpcAioAcceptor extends AbstractRpcAcceptor{
 	public RpcAioAcceptor(){
 		aioWriter = new RpcAioWriter();
 	}
-	
-	public AsynchronousServerSocketChannel getServerChannel() {
-		return serverChannel;
-	}
 
+	/**
+	 * 启动服务
+	 */
 	@Override
 	public void startService() {
 		super.startService();
@@ -51,6 +50,11 @@ public class RpcAioAcceptor extends AbstractRpcAcceptor{
 		}
 	}
 
+	/**
+	 * 停止服务
+	 * 管理channel
+	 * 停止监听器
+	 */
 	@Override
 	public void stopService() {
 		super.stopService();
@@ -58,7 +62,10 @@ public class RpcAioAcceptor extends AbstractRpcAcceptor{
 		stop = true;
 		this.stopListeners();
 	}
-	
+
+	/**
+	 * 关闭channel
+	 */
 	private void closeChannel(){
 		acceptHandler.stopService();
 		try {
@@ -68,7 +75,11 @@ public class RpcAioAcceptor extends AbstractRpcAcceptor{
 		}
 		this.channelGroup.shutdown();
 	}
-	
+
+	/**
+	 * 处理程序异常的逻辑
+	 * @param e
+	 */
 	@Override
 	public void handleNetException(Exception e) {
 		this.stopService();
@@ -79,8 +90,13 @@ public class RpcAioAcceptor extends AbstractRpcAcceptor{
 		}
 	}
 
-	public void handleFail(Throwable th, RpcAioAcceptor acceptor){
-		acceptor.handleNetException(new RpcException(th));
+	/**
+	 * 处理程序访问失败的逻辑
+	 * @param throwable
+	 * @param acceptor
+	 */
+	public void handleFail(Throwable throwable, RpcAioAcceptor acceptor){
+		acceptor.handleNetException(new RpcException(throwable));
 	}
 
 	public RpcAioWriter getAioWriter() {
@@ -97,5 +113,9 @@ public class RpcAioAcceptor extends AbstractRpcAcceptor{
 
 	public void setChannelGroupThreads(int channelGroupThreads) {
 		this.channelGroupThreads = channelGroupThreads;
+	}
+
+	public AsynchronousServerSocketChannel getServerChannel() {
+		return serverChannel;
 	}
 }

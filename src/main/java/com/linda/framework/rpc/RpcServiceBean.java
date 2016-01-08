@@ -2,6 +2,11 @@ package com.linda.framework.rpc;
 
 import java.io.Serializable;
 
+/**
+ * rpc服务的封装类
+ * 封装了rpc服务的配置
+ * 接口,实现类,版本
+ */
 public class RpcServiceBean implements Serializable {
 
 	private static final long serialVersionUID = -1840492630641710459L;

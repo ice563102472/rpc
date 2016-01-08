@@ -14,10 +14,10 @@ public class AioServerTest {
 		server.setHost("127.0.0.1");
 		server.setPort(4321);
 		server.setAcceptor(new RpcAioAcceptor());
-		
+
 		server.register(HelloRpcService.class, new HelloRpcServiceImpl());
 		server.register(HelloRpcTestService.class, new HelloRpcTestServiceImpl());
-		
+
 		server.startService();
 
 		System.out.println("server started");

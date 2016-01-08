@@ -59,7 +59,7 @@ public abstract class AbstractRpcServer extends AbstractRpcNetworkBase{
 	@Override
 	public void startService() {
 		checkAcceptor();
-		//监控filter
+		//监控filter,
 		statFilter.startService();
 		
 		this.addRpcFilter(statFilter);
