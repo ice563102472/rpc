@@ -16,7 +16,7 @@ public class AioServerTest {
 		server.setAcceptor(new RpcAioAcceptor());
 
 		server.register(HelloRpcService.class, new HelloRpcServiceImpl());
-		server.register(HelloRpcTestService.class, new HelloRpcTestServiceImpl());
+//		server.register(HelloRpcTestService.class, new HelloRpcTestServiceImpl());
 
 		server.startService();
 

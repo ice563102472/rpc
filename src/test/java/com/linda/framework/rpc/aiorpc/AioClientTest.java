@@ -21,9 +21,9 @@ public class AioClientTest {
 		
 		helloRpcService.sayHello("this is a test", 123);
 		
-		HelloRpcTestService testService = client.register(HelloRpcTestService.class);
-		String index = testService.index(12345, "haha");
-		System.out.println("resp:"+index);
+//		HelloRpcTestService testService = client.register(HelloRpcTestService.class);
+//		String index = testService.index(12345, "haha");
+//		System.out.println("resp:"+index);
 		
 	}
 
